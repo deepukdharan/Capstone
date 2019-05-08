@@ -1,0 +1,27 @@
+.removeUnderline
+{
+  text-decoration: none;
+}
+
+
+.onClickHighlight
+{
+  color: blue;
+  text-decoration: none;
+}
+
+.onUnClickHighlight
+{
+  color: black;
+  text-decoration: none;
+}
+
+a:active {
+  color: blue;
+}
+
+a[tabindex]:focus {
+  color:blue;
+  outline: none;
+}
+

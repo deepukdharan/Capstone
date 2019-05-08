@@ -1,0 +1,54 @@
+<p>
+<table>
+  <tr> <td colspan="2">
+      <label><b>Task:</b></label><input type="text" size="50"   [(ngModel)]="taskName"  (ngModelChange)="getFilteredData()" (keyup)="getFilteredData()"/>
+
+  </td>
+  <td colspan="2">
+      <label><b>Parent Task:</b><input type="parentTaskName" size="50" [(ngModel)]="parentTaskName" (ngModelChange)="getFilteredData()" (keyup)="getFilteredData()"/>
+      </label>
+  </td>
+  <tr>
+  <td>
+      <label><b>Priotity From:</b><input type="priorityFrom" [(ngModel)]="priorityFrom" (ngModelChange)="getFilteredData()" (keyup)="getFilteredData()"/>
+      </label>
+  </td>
+  <td>
+      <label><b>Priority To:</b><input type="priorityTo" [(ngModel)]="priorityTo" (ngModelChange)="getFilteredData()" (keyup)="getFilteredData()"/>
+      </label><br>
+  </td>
+  <td>
+      <label><b>Start Date:</b><input type="date" [(ngModel)]="startDate" (ngModelChange)="getFilteredData()" (keyup)="getFilteredData()"/>
+      </label><br>
+  </td>
+  <td>
+      <label><b>End Date:</b><input type="date" [(ngModel)]="endDate" (ngModelChange)="getFilteredData()" (keyup)="getFilteredData()"/>
+      </label>
+  </td>
+  </tr>
+</table>
+<br><label>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
+
+
+<div></div>
+
+<table *ngFor="let eachitem of filteredTaskDetails ; let i=index;">
+  <tr>
+    <th>Sl. No.</th>
+    <th>Task</th>
+    <th>Parent Task</th>
+    <th>Priority</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  <tr >
+    <td style="width: 5%; text-align: center;">{{i +1}}</td>
+    <td style="width: 15%;text-align: center;">{{eachitem.Task}}</td>
+    <td style="width: 15%;text-align: center;">{{eachitem.Parent_Task}}</td>
+    <td style="width: 15%;text-align: center;">{{eachitem.Priority}}</td>
+    <td style="width: 15%;text-align: center;">{{eachitem.Start_Date|date:'MM/dd/yyyy'}}</td>
+    <td style="width: 15%;text-align: center;">{{eachitem.End_Date|date:'MM/dd/yyyy'}}</td>
+    <td style="width: 15%;text-align: center;"><button (click)="onClickEdit(eachitem.Task_Id)">Edit    </button></td>
+    <td style="width: 15%;text-align: center;"><button (click)="onClickEndTask(eachitem.Task_Id)">End Task</button></td>
+  </tr>
+</table>

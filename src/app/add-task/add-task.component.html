@@ -1,0 +1,42 @@
+
+
+<form [formGroup]="addTaskForm" (ngSubmit)="onAddTask()">
+<h5 *ngIf ="success">Please enter all the details</h5>
+<table>
+<tr><td><label><b>Task: </b></label></td><td>
+<input type="text" formControlName="task" />
+<div *ngIf="submitted && addTaskForm.controls.task.errors" class="error">
+<div *ngIf="addTaskForm.controls.task.errors.required" style="background-color: yellow">Task Name Is Required</div></div>
+</td></tr>
+
+<tr><td><label><b>Priority:</b></label></td><td>
+<mat-slider thumbLabel tickInterval="auto" min="0" max="30" step="1" value="1" formControlName="priority" > </mat-slider>
+<div *ngIf="submitted && addTaskForm.controls.priority.errors" >
+<div *ngIf="addTaskForm.controls.priority.errors.required" style="background-color: yellow">Priority Is Required</div></div>
+</td></tr>
+
+<tr><td><label><b>Parent Task:</b></label></td><td>
+<select (change)="onSelect($event)" [(ngModel)]="selectedParentTask" [ngModelOptions]="{standalone: true}">
+  <option *ngFor="let task of parentTask"  selected = "task.Task_Id == selectedParentTask"  [(value)]= "task.Task_Id">
+     {{task.Task}}
+  </option>
+</select></td></tr>
+
+<tr><td><label><b>Start Date:</b></label></td><td>
+<input type="date" formControlName="startDate"/>
+<div *ngIf="submitted && addTaskForm.controls.startDate.errors" >
+<div *ngIf="addTaskForm.controls.startDate.errors.required" style="background-color: yellow">Start Date Is Required</div></div>
+</td></tr>
+
+<tr><td><label><b>End Date:</b></label></td><td>
+<input type="date" formControlName="endDate" />
+<div *ngIf="submitted && addTaskForm.controls.endDate.errors" >
+<div *ngIf="addTaskForm.controls.endDate.errors.required" style="background-color: yellow">End Date Is Required</div></div>
+</td></tr>
+
+<tr><td><input type="submit" name="submitButton" value="{{submitButtonText}}"> </td><td>&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="Reset"></td></tr>
+</table>
+</form>
+
+
+
